@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+	{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<title>Timeline as a Service</title>
+	{% endblock %}
+</head>
+
+<body>
+	<h1>Timeline as a Service</h1>
+	<p class="tagline">All you need to know about the past and nothing more</p>
+	<div id="content">{% block content %}{% endblock %}</div>
+
+	<footer>
+		{% block footer %}
+		Built for <a href="https://rrchnm.org">RRCHNM</a>.
+		{% endblock %}
+	</footer>
+</body

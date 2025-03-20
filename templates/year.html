@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>All about a year</h2>
+<p>
+	{% if event %}
+	<strong>{{ year }}</strong>: {{ event }}
+	{% else %}
+	<strong>{{ year }}</strong>: No event happened in that year.
+	{% endif %}
+</p>
+
+<p>
+	<a href="{{ url_for("year_html", year=year-1) }}">Previous year </a> |
+	<a href="{{ url_for("year_html", year=year+1) }}">Next year </a>
+</p>
+
+<p><a href="{{ url_for("events_html") }}">All events</a></p>
+
+{% endblock %}

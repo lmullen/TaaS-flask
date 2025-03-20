@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form id="eventForm">
+	<div class="form-group">
+		<label for="year">Year:</label>
+		<input type="number" id="year" name="year" required>
+	</div>
+
+	<div class="form-group">
+		<label for="event">Event:</label>
+		<input type="text" id="event" name="event" required>
+	</div>
+
+	<button type="submit">Submit</button>
+</form>
+
+<script>
+	document.getElementById('eventForm').addEventListener('submit', function (e) {
+		e.preventDefault();
+
+		// Get form values
+		const year = document.getElementById('year').value;
+		const event = document.getElementById('event').value;
+
+		// Create JSON payload
+		const data = {
+			year: parseInt(year),
+			event: event
+		};
+
+		// Replace with your actual endpoint URL
+		const url = "/events/new";
+
+		// Send POST request
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		});
+		setTimeout(() => {
+			window.location.href = '/events';
+		}, 300); // 100ms delay is usually enough
+
+	})
+</script>
+{% endblock %}
