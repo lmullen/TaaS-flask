@@ -45,6 +45,12 @@ def year_text(year):
     #     )
 
 
+@app.route("/event")
+def year_query():
+    year = request.args.get("year", type=int)
+    return events.get(year)
+
+
 @app.route("/year/<int:year>")
 def year_html(year):
     event = events.get(year)
